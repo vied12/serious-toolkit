@@ -33,6 +33,8 @@ from flask.ext.babel import Babel
 # app
 app = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
+# pyjade
+app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 # i18n
 babel = Babel(app)
 
@@ -45,20 +47,20 @@ babel = Babel(app)
 def index():
 	g.language = "en"
 
-	response = make_response(render_template('home.html'))
+	response = make_response(render_template('home.jade'))
 	return response
 
 
 @app.route('/fr.html')
 def page_fr():
 	g.language = "fr"
-	response = make_response(render_template('home.html'))
+	response = make_response(render_template('home.jade'))
 	return response
 
 @app.route('/de.html')
 def page_de():
 	g.language = "de"
-	response = make_response(render_template('home.html'))
+	response = make_response(render_template('home.jade'))
 	return response
 
 # -----------------------------------------------------------------------------
