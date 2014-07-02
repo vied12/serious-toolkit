@@ -1,0 +1,31 @@
+---
+css_all: 
+  output: gen/style.css
+  contents:
+    - contents:
+      - "../assets/less/base.less"
+      filters: less
+      depends: "../assets/less/*.less"
+      output: gen/less.css
+      debug : false
+
+js_all: 
+  output: gen/scripts.js
+  contents:
+    - "../static/vendors/jquery.min.js"
+    - "../static/vendors/underscore.js"
+    - "../static/vendors/bootstrap-3.2.0/js/bootstrap.min.js"
+    # - "../assets/vendors/d3.js"
+    # - "../assets/vendors/queue.js"
+    # - "../assets/vendors/raf.js"
+    # - "../assets/vendors/topojson.js"
+    # - "../assets/vendors/jquery.easing.1.3.js"
+    # - "../assets/vendors/jquery.easing.compatibility.js"
+    # - "../assets/vendors/chroma.js"
+    # - "../assets/vendors/jquery.qtip.js"
+    - contents:
+      - "../assets/coffee/navigation.coffee"
+      output: gen/app.js
+      filters: coffeescript
+
+# EOF
