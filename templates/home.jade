@@ -1,4 +1,44 @@
 | {% extends 'base.html' %}
 | {% block content %}
-div templates/home.jade
+.bg
+
+div.container-fluid.widget(data-widget="Navigation")
+	
+	.serious-logo
+
+	.headline The Serious Toolkit to make static webapps with all your love.
+
+
+	h2 What's in the box
+	ul(data-bind="foreach: features")
+		li
+			.feature(data-bind="html: feature")
+			// ko if: $data.write
+			.write(data-bind="foreach: write")
+				.language
+					b(data-bind="text: from")
+					= " in "
+					// ko if: typeof(to) === "object"
+					span.to(data-bind="foreach: to")
+						b(data-bind="text: $data")
+						//- if isnt the last
+						// ko if: ($index() < ($parent.to.length - 1))
+						= "or"
+						// /ko
+					// /ko
+					// ko if: typeof(to) != "object"
+					b(data-bind="text: to")
+					// /ko
+			// /ko
+			// ko if: $data.description
+			.description(data-bind="html: description")
+			// /ko
+
+	.footer.row
+		= " Since 2012 — "
+		a(href="https://github.com/vied12/serious-toolkit", target="_blank") on Github
+		= " — crafted by Edouard from "
+		a(href="https://jplusplus.org", target="_blank") Journalism++
+
+
 | {% endblock %}

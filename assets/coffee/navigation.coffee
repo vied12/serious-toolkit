@@ -23,9 +23,37 @@
 #     You should have received a copy of the GNU General Public License
 #     along with Serious-Toolkit.  If not, see <http://www.gnu.org/licenses/>.
 
-class Navigation
+class Navigation extends serious.Widget
 
-	constructor: () ->
-		console.log "coucou from assets/coffee/navigation.coffee"
+	bindUI: () =>
+		console.debug "Coucou from assets/coffee/navigation.coffee"
+		@features = ko.observableArray([
+			{
+				feature     : "Webapp Flask based"
+			}
+			{
+				feature     : "Write your"
+				write       : [
+					{ from : "Javascript", to : "coffeescript" }
+					{ from : "html"      , to : "jade" }
+					{ from : "css"       , to : ["clevercss", "less"] }
+				]
+			}
+			{
+				feature     : "Front-End Template Engine"
+				description : "with Knockout.js"
+			}
+			{
+				feature     : "Mechanism to render the application into a set of static files"
+				description : "with Frozen-Flask"
+			}
+			{
+				feature     : "Translation supported"
+				description : "thanks to Flask-Babel"
+			}
+			{
+				feature     : "<a href=\"https://github.com/vied12/serious-toolkit/tree/master/assets/vendors/serious-toolkit/widget.coffee\", target=\"_blank\">widget.js</a> as front-end controller"
+			}
+		])
 
 # EOF

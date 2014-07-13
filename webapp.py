@@ -33,6 +33,10 @@ from flask.ext.babel import Babel
 # app
 app = Flask(__name__)
 app.config.from_pyfile("settings.cfg")
+# assets
+assets  = Environment(app)
+bundles = YAMLLoader("assets.yaml").load_bundles()
+assets.register(bundles)
 # pyjade
 app.jinja_env.add_extension('pyjade.ext.jinja.PyJadeExtension')
 # i18n
@@ -82,11 +86,6 @@ def get_locale():
 #
 # -----------------------------------------------------------------------------
 if __name__ == '__main__':
-	# assets
-	assets  = Environment(app)
-	bundles = YAMLLoader("assets.yaml").load_bundles()
-	assets.register(bundles)
-
 	# run application
 	app.run(extra_files=("assets.yaml",), host="0.0.0.0")
 

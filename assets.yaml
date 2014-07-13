@@ -5,7 +5,7 @@ css_all:
     - contents:
       - "../assets/less/base.less"
       filters: less
-      depends: "../assets/less/*.less"
+      depends: "../assets/**/*.less"
       output: gen/less.css
       debug : false
 
@@ -15,6 +15,7 @@ js_all:
     - "../static/vendors/jquery.min.js"
     - "../static/vendors/underscore.js"
     - "../static/vendors/bootstrap-3.2.0/js/bootstrap.min.js"
+    - "../static/vendors/knockout-3.1.0.js"
     # - "../assets/vendors/d3.js"
     # - "../assets/vendors/queue.js"
     # - "../assets/vendors/raf.js"
@@ -24,8 +25,10 @@ js_all:
     # - "../assets/vendors/chroma.js"
     # - "../assets/vendors/jquery.qtip.js"
     - contents:
+      - "../assets/vendors/serious-toolkit/utils.coffee"
+      - "../assets/vendors/serious-toolkit/widget.coffee"
       - "../assets/coffee/navigation.coffee"
-      output: gen/app.js
+      output: gen/coffee.js
       filters: coffeescript
 
 # EOF

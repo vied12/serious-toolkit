@@ -1,10 +1,10 @@
 // GENERAL RULES
 body {
-	background-color  : #E1E1E1;
-	// background-color  : #F0EEE6;
-	font-family       : Arial;
-	padding           : @PADDING;
-	margin            : 0;
+	font-family        : 'Indie Flower', sans-serif;
+	padding            : @PADDING;
+	margin             : 0;
+	color              : #E7E7E7;
+	background-color   : #5B5E40;
 
 	-webkit-touch-callout : none;
 	-webkit-user-select   : none;
@@ -12,6 +12,79 @@ body {
 	-moz-user-select      : none;
 	-ms-user-select       : none;
 	user-select           : none;
+}
+
+h1 {
+	text-decoration: underline;
+}
+
+.bg {
+	background-image  : url("../pattern2.jpg");
+	background-repeat : repeat;
+	position: absolute;
+	top: 0;
+	left : 0;
+	right: 0;
+	bottom: 0;
+	opacity: .1;
+	z-index: 1;
+}
+
+.serious-logo {
+	background-image  : url("../serious.png");
+	background-repeat : no-repeat;
+	width             : 320px;
+	height            : 120px;
+	&:after {
+		content: "";
+		position: absolute;
+		background-color: #42442E;
+		-webkit-box-shadow: 3px 3px 2px rgba(43, 44, 30, 0.86);
+		-moz-box-shadow: 3px 3px 2px rgba(43, 44, 30, 0.86);
+		-ms-box-shadow: 3px 3px 2px rgba(43, 44, 30, 0.86);
+		box-shadow: 3px 3px 2px rgba(43, 44, 30, 0.86);
+		height: 10px;
+		width: 100%;
+		z-index: -1;
+		top: 111px;
+	}
+}
+
+.furious-logo {
+	background-image  : url("../furious.png");
+	background-repeat : no-repeat;
+	width             : 320px;
+	height            : 460px;
+}
+
+.container-fluid {
+	z-index: 2;
+	position: relative;
+	.headline {
+		margin-top: 20px;
+	}
+	li {
+		list-style-type: none;
+		&:before {
+			top: 4px;
+			position: relative;
+			content: " *  ";
+		}
+		.feature {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.description {
+			font-size: .8em;
+			display: inline-block;
+		}
+		.write {
+			vertical-align: top;
+			display: inline-block;
+			// margin-top: -24px;
+			// padding-left :86px;
+		}
+	}
 }
 
 // EOF

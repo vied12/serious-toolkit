@@ -40,7 +40,7 @@ install:
 	. `pwd`/.env ; pip install -r requirements.txt
 	. `pwd`/.env ; npm install
 
-freeze:
+freeze: clean
 	-rm build -r
 	. `pwd`/.env ; python -c "from webapp import app; from flask_frozen import Freezer; freezer = Freezer(app); freezer.freeze()"
 	-rm build/static/.webassets-cache/ -r
