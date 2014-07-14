@@ -50,7 +50,6 @@ babel = Babel(app)
 @app.route('/')
 def index():
 	g.language = "en"
-
 	response = make_response(render_template('home.jade'))
 	return response
 
