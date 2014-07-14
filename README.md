@@ -1,16 +1,22 @@
-The Serious-Toolkit
+A Serious-Toolkit
 ===================
 
-A Web Application prebuilt for Static Single Page Design.
+The Serious Toolkit to make static webapps with all your love.
 
-Including
+**Including**
 
 - Flask
+- Jade
+- Knockout.js
+- Widget.js
 - Less
 - Clevercss
 - Coffee-script
 - Bootstrap
 
+## Kind of Doc
+
+http://vied12.github.io/serious-toolkit/
 
 ## Commands
 

@@ -34,11 +34,19 @@ div.container-fluid.widget(data-widget="Navigation")
 			.description(data-bind="html: description")
 			// /ko
 
+	h2 Where things happen
+
+	div Backend —&gt; 
+		a(href="https://github.com/vied12/serious-toolkit/blob/master/webapp.py", target="_blank") webapp.py
+	div Front-end —&gt; 
+		a(href="https://github.com/vied12/serious-toolkit/blob/master/assets/coffee/navigation.coffee", target="_blank") navigation.coffee
+	div Assets  —&gt; 
+		a(href="https://github.com/vied12/serious-toolkit/blob/master/assets.yaml", target="_blank") assets.yaml
+
 	.footer.row
 		= " Since 2012 — "
 		a(href="https://github.com/vied12/serious-toolkit", target="_blank") on Github
 		= " — crafted by Edouard from "
 		a(href="https://jplusplus.org", target="_blank") Journalism++
-
 
 | {% endblock %}

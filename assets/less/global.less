@@ -5,29 +5,60 @@ body {
 	margin             : 0;
 	color              : #E7E7E7;
 	background-color   : #5B5E40;
-
 	-webkit-touch-callout : none;
 	-webkit-user-select   : none;
 	-khtml-user-select    : none;
 	-moz-user-select      : none;
 	-ms-user-select       : none;
 	user-select           : none;
+	.bg {
+		background-image  : url("../pattern2.jpg");
+		background-repeat : repeat;
+		position: absolute;
+		top: 0;
+		left : 0;
+		right: 0;
+		bottom: 0;
+		opacity: .1;
+		z-index: 1;
+	}
 }
 
 h1 {
 	text-decoration: underline;
 }
 
-.bg {
-	background-image  : url("../pattern2.jpg");
-	background-repeat : repeat;
-	position: absolute;
-	top: 0;
-	left : 0;
-	right: 0;
-	bottom: 0;
-	opacity: .1;
-	z-index: 1;
+.container-fluid {
+	z-index: 2;
+	position: relative;
+	.headline {
+		margin-top: 20px;
+	}
+	li {
+		list-style-type: none;
+		&:before {
+			top: 4px;
+			position: relative;
+			content: " * ";
+		}
+		.feature {
+			display: inline-block;
+			vertical-align: top;
+		}
+		.description {
+			font-size: .8em;
+			display: inline-block;
+		}
+		.write {
+			vertical-align: top;
+			display: inline-block;
+			// margin-top: -24px;
+			// padding-left :86px;
+		}
+	}
+	.footer {
+		padding-top: 20px;
+	}
 }
 
 .serious-logo {
@@ -55,36 +86,6 @@ h1 {
 	background-repeat : no-repeat;
 	width             : 320px;
 	height            : 460px;
-}
-
-.container-fluid {
-	z-index: 2;
-	position: relative;
-	.headline {
-		margin-top: 20px;
-	}
-	li {
-		list-style-type: none;
-		&:before {
-			top: 4px;
-			position: relative;
-			content: " *  ";
-		}
-		.feature {
-			display: inline-block;
-			vertical-align: top;
-		}
-		.description {
-			font-size: .8em;
-			display: inline-block;
-		}
-		.write {
-			vertical-align: top;
-			display: inline-block;
-			// margin-top: -24px;
-			// padding-left :86px;
-		}
-	}
 }
 
 // EOF
