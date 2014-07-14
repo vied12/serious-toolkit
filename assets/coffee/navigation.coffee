@@ -25,35 +25,37 @@
 
 class Navigation extends serious.Widget
 
+	constructor: ->
+		@feature = [
+				{
+					feature     : "Webapp Flask based"
+				}
+				{
+					feature     : "Write your"
+					write       : [
+						{ from : "Javascript", to : "coffeescript" }
+						{ from : "html"      , to : "jade" }
+						{ from : "css"       , to : ["clevercss", "less"] }
+					]
+				}
+				{
+					feature     : "Front-End Template Engine"
+					description : "with Knockout.js"
+				}
+				{
+					feature     : "Mechanism to render the application into a set of static files"
+					description : "with Frozen-Flask"
+				}
+				{
+					feature     : "Translation supported"
+					description : "thanks to Flask-Babel"
+				}
+				{
+					feature     : "<a href=\"https://github.com/vied12/serious-toolkit/tree/master/assets/vendors/serious-toolkit/widget.coffee\", target=\"_blank\">widget.js</a> as front-end controller"
+				}
+			]
+
 	bindUI: () =>
-		console.debug "Coucou from assets/coffee/navigation.coffee"
-		@features = ko.observableArray([
-			{
-				feature     : "Webapp Flask based"
-			}
-			{
-				feature     : "Write your"
-				write       : [
-					{ from : "Javascript", to : "coffeescript" }
-					{ from : "html"      , to : "jade" }
-					{ from : "css"       , to : ["clevercss", "less"] }
-				]
-			}
-			{
-				feature     : "Front-End Template Engine"
-				description : "with Knockout.js"
-			}
-			{
-				feature     : "Mechanism to render the application into a set of static files"
-				description : "with Frozen-Flask"
-			}
-			{
-				feature     : "Translation supported"
-				description : "thanks to Flask-Babel"
-			}
-			{
-				feature     : "<a href=\"https://github.com/vied12/serious-toolkit/tree/master/assets/vendors/serious-toolkit/widget.coffee\", target=\"_blank\">widget.js</a> as front-end controller"
-			}
-		])
+		@scope.features = ko.observableArray(@feature)
 
 # EOF

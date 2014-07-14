@@ -22,9 +22,7 @@ div.container.widget(data-widget="Navigation")
 					span.to(data-bind="foreach: to")
 						b(data-bind="text: $data")
 						//- if isnt the last
-						// ko if: ($index() < ($parent.to.length - 1))
-						= "or"
-						// /ko
+						span(data-bind="visible: $index() < ($parent.to.length - 1)")  &nbsp;or&nbsp;
 					// /ko
 					// ko if: typeof(to) != "object"
 					b(data-bind="text: to")
