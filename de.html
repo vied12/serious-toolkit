@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8"></meta>
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<title>Serious-Toolkit</title>
+
+		
+<link rel="stylesheet" href="static/gen/style.css?1405298825" type="text/css"/>
+
+
+	</head>
+
+	<body class="use-base">
+
+		
+<div class="bg"></div>
+<div data-widget="Navigation" class="container widget">
+  <div class="serious-logo row"></div>
+  <div class="headline">The Serious Toolkit to make static webapps with all your love.</div>
+  <h2>What's in the box</h2>
+  <ul data-bind="foreach: features">
+    <li>
+      <div data-bind="html: feature" class="feature"></div>
+      <!-- ko if: $data.write-->
+      <div data-bind="foreach: write" class="write">
+        <div class="language"><b data-bind="text: from"></b> in 
+          <!-- ko if: typeof(to) === "object"--><span data-bind="foreach: to" class="to"><b data-bind="text: $data"></b><span data-bind="visible: $index() < ($parent.to.length - 1)">&nbsp;or&nbsp;</span></span>
+          <!-- /ko-->
+          <!-- ko if: typeof(to) != "object"--><b data-bind="text: to"></b>
+          <!-- /ko-->
+        </div>
+      </div>
+      <!-- /ko-->
+      <!-- ko if: $data.description-->
+      <div data-bind="html: description" class="description"></div>
+      <!-- /ko-->
+    </li>
+  </ul>
+  <h2>Where things happen</h2>
+  <div>Backend —&gt; <a href="https://github.com/vied12/serious-toolkit/blob/master/webapp.py" target="_blank">webapp.py</a>
+  </div>
+  <div>Front-end —&gt; <a href="https://github.com/vied12/serious-toolkit/blob/master/assets/coffee/navigation.coffee" target="_blank">assets/coffee/navigation.coffee</a> and <a href="https://github.com/vied12/serious-toolkit/blob/master/templates/home.jade" target="_blank">templates/home.jade</a>
+  </div>
+  <div>Assets  —&gt; <a href="https://github.com/vied12/serious-toolkit/blob/master/assets.yaml" target="_blank">assets.yaml</a>
+  </div>
+  <div class="footer row"> Since 2012 — <a href="https://github.com/vied12/serious-toolkit" target="_blank">on Github</a> — crafted by Edouard from <a href="https://jplusplus.org" target="_blank">Journalism++</a>
+  </div>
+</div>
+
+		
+<script type="text/javascript" src="static/gen/scripts.js?1405937341"></script>
+
+<script>serious.Widget.bindAll();
+
+</script>
+
+	</body>
+</html>
