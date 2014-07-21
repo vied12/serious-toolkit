@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 14-Jul-2014
+# Last mod : 16-Jul-2014
 # -----------------------------------------------------------------------------
 # >  A Serious Toolkit for Serious Projects.
 # >  
@@ -43,8 +43,11 @@ class window.serious.Widget
 			widget_class = Widget.getWidgetClass(ui)
 			if widget_class?
 				widget = new widget_class()
-				widget._bindUI(ui)
+				widget_class.Instance = widget
+				widget.scope = {}
+				widget.ui    = $(ui)
 				widget.bindUI(ui)
+				widget._bindUI(ui)
 				# use http://knockoutjs.com as template manager
 				ko.applyBindings(widget.scope, ui.get(0)) if ko?
 				return widget
@@ -56,8 +59,6 @@ class window.serious.Widget
 		return eval("(" + $(ui).attr("data-widget") + ")")
 
 	_bindUI: (ui) =>
-		@scope = {}
-		@ui    = $(ui)
 		if @ui[0]._widget
 			delete @ui[0]._widget
 		@ui[0]._widget = this # set widget in selector for ensureWidget
@@ -68,7 +69,7 @@ class window.serious.Widget
 				nui = @ui.find(value)
 				if nui.length < 1
 					console.warn("uis", key, "not found in", ui)
-				@uis[key] = nu
+				@uis[key] = nui
 
 	hide: =>
 		@ui.addClass "hidden"
