@@ -79,6 +79,12 @@ def get_locale():
 		g.language = request.accept_languages.best_match(['en', 'fr', 'de'])
 	return g.get("language")
 
+@app.template_filter('relative_url')
+def relative_url_filter(s):
+	if s.startswith(app.static_url_path):
+		return s[1:]
+	return s
+
 # -----------------------------------------------------------------------------
 #
 # Main

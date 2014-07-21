@@ -27,9 +27,14 @@ VENV         = `pwd`/.env
 VIRTUALENV   = virtualenv
 PIP          = pip
 PYTHON       = python
+DEBUG        = True
+
+ifndef BASE_URL
+	BASE_URL = "http://localhost:5000"
+endif
 
 run: clean
-	. `pwd`/.env ; python $(WEBAPP)
+	. `pwd`/.env ; export DEBUG=$(DEBUG) ; python $(WEBAPP)
 
 clean:
 	$(RM) $(PYC)
@@ -42,10 +47,8 @@ install:
 
 freeze: clean
 	-rm build -r
-	. `pwd`/.env ;  export DEBUG="False" ; python -c "from webapp import app; from flask_frozen import Freezer; freezer = Freezer(app); freezer.freeze()"
+	. `pwd`/.env ;  export DEBUG="False" ; export BASE_URL=$(BASE_URL) ;python -c "from webapp import app; from flask_frozen import Freezer; freezer = Freezer(app); freezer.freeze()"
 	-rm build/static/.webassets-cache/ -r
-	sed -i 's/href="\//href="/g' build/*.html
-	sed -i 's/src="\//src="/g' build/*.html
 
 update_i18n:
 	pybabel extract -F babel.cfg -o translations/messages.pot .
