@@ -28,10 +28,10 @@ VIRTUALENV   = virtualenv
 PIP          = pip
 PYTHON       = python
 DEBUG        = True
+HOST         = "http://localhost:5000"
 
 ifndef BASE_URL
-	BASE_URL = "http://localhost:5000"
-endif
+	BASE_URL = $(HOST)
 
 run: clean
 	. `pwd`/.env ; export DEBUG=$(DEBUG) ; python $(WEBAPP)
