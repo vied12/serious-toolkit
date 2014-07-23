@@ -29,9 +29,12 @@ PIP          = pip
 PYTHON       = python
 DEBUG        = True
 HOST         = "http://localhost:5000"
+DIST_DIR     = "build/"
+TIMESTAMP   = $(shell date "+%Y-%m-%d")
 
 ifndef BASE_URL
 	BASE_URL = $(HOST)
+endif
 
 run: clean
 	. `pwd`/.env ; export DEBUG=$(DEBUG) ; python $(WEBAPP)
@@ -44,11 +47,13 @@ install:
 	virtualenv venv --no-site-packages --distribute --prompt=$(PROJECT_NAME)
 	. `pwd`/.env ; pip install -r requirements.txt
 	. `pwd`/.env ; npm install
+	@echo "installed"
 
 freeze: clean
 	-rm build -r
 	. `pwd`/.env ;  export DEBUG="False" ; export BASE_URL=$(BASE_URL) ;python -c "from webapp import app; from flask_frozen import Freezer; freezer = Freezer(app); freezer.freeze()"
 	-rm build/static/.webassets-cache/ -r
+	@echo "freezed in $(DIST_DIR)"
 
 update_i18n:
 	pybabel extract -F babel.cfg -o translations/messages.pot .
@@ -56,5 +61,11 @@ update_i18n:
 
 compile_i18n:
 	pybabel compile -d translations
+
+archive: freeze
+	@cp -r $(DIST_DIR) $(PROJECT_NAME)-$(TIMESTAMP)
+	@tar cvjf "$(PROJECT_NAME)-$(TIMESTAMP).tar.bz2" "$(PROJECT_NAME)-$(TIMESTAMP)"
+	@rm -rf $(PROJECT_NAME)-$(TIMESTAMP)
+	@echo "archive $(PROJECT_NAME)-$(TIMESTAMP).tar.bz2 created"
 
 # EOF
