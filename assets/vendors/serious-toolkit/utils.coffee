@@ -6,7 +6,7 @@
 # License : GNU Lesser General Public License
 # -----------------------------------------------------------------------------
 # Creation : 04-Aug-2012
-# Last mod : 13-Jul-2014
+# Last mod : 23-Jul-2014
 # -----------------------------------------------------------------------------
 # >  A Serious Toolkit for Serious Projects.
 
@@ -25,7 +25,7 @@ isDefined = (obj) ->
 jQuery.fn.opacity = (int) ->
 	$(this).css({opacity:int})
 
-window.serious.Utils.clone = (obj) ->
+serious.Utils.clone = (obj) ->
 	if not obj? or typeof obj isnt 'object'
 		return obj
 	if obj instanceof Date
@@ -41,6 +41,15 @@ window.serious.Utils.clone = (obj) ->
 	for key of obj
 		newInstance[key] = window.serious.Utils.clone obj[key]
 	return newInstance
+
+serious.Utils.getHashParams = ->
+	hashParams = {}
+	a = /\+/g # Regex for replacing addition symbol with a space
+	r = /([^&;=]+)=?([^&;]*)/g
+	d = (s) -> decodeURIComponent s.replace(a, " ")
+	q = window.location.hash.substring(1)
+	hashParams[d(e[1])] = d(e[2])  while e = r.exec(q)
+	return hashParams
 
 jQuery.fn.cloneTemplate = (dict, removeUnusedField=false) ->
 	nui = $(this[0]).clone()
