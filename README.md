@@ -20,6 +20,12 @@ http://vied12.github.io/serious-toolkit/
 
 ## Commands
 
+### Requirements
+
+- pip
+- virtualenv
+- npm
+
 ### Install
 
 	make install
